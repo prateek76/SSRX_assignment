@@ -83,8 +83,12 @@ export class TableBasicExample implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       console.log(result);
+      this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+
     });
-  }
+
+      }
 
 
 
