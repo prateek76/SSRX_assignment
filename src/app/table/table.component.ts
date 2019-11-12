@@ -72,6 +72,12 @@ export class TableBasicExample implements OnInit {
   }
 
   edit(eve,edit){
+    this.dataSource.data.forEach(
+        (row) => {
+            if (row['position'].toString() == eve['position']){
+                this.selection.select(row)
+            }
+        });
     eve.edit = edit
     console.log(eve);
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
