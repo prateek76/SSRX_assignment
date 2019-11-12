@@ -1,0 +1,23 @@
+<h1  *ngIf="data.edit" mat-dialog-title>Edit/Delete</h1>
+<h1  *ngIf="!data.edit" mat-dialog-title>Add Record</h1>
+<form  [formGroup]="profileForm">
+	<div mat-dialog-content>
+		<mat-form-field>
+			<input matInput placeholder="name" formControlName="name" required [(ngModel)]="data.name">
+		</mat-form-field>
+		<mat-form-field>
+			<input matInput placeholder="symbol" formControlName="symbol" required [(ngModel)]="data.symbol">
+		</mat-form-field>
+		<mat-form-field>
+			<input matInput placeholder="weight" formControlName="weight" required [(ngModel)]="data.weight">
+		</mat-form-field>
+	</div>
+
+	<div mat-dialog-actions>
+		<button mat-button (click)="close()">Close</button>
+		<button mat-button (click)="delete()">Delete</button>
+		<button   [disabled]="!profileForm.valid || !profileForm.dirty"*ngIf="data.edit" mat-button mat-dialog-close cdkFocusInitial (click)="update()">Update</button>
+		<button   [disabled]="!profileForm.valid || !profileForm.dirty" *ngIf="!data.edit" mat-button mat-dialog-close cdkFocusInitial (click)="add_data()">Add Data</button>
+	</div>
+
+</form>
